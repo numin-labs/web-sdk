@@ -1,0 +1,23 @@
+{
+  "name": "web-sdk",
+  "version": "1.0.0",
+  "description": "SDK to integrate your website with the blockchain",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "numin",
+    "labs",
+    "typescript",
+    "solana",
+    "web"
+  ],
+  "author": "numin-labs",
+  "license": "ISC",
+  "dependencies": {
+    "@solana/web3.js": "^1.98.0",
+    "axios": "^1.7.9",
+    "buffer": "^6.0.3"
+  }
+}
