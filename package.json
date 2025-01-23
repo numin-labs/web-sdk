@@ -1,9 +1,15 @@
 {
-  "name": "web-sdk",
-  "version": "1.0.0",
+  "name": "@numin/web-sdk",
+  "version": "1.0.8",
   "description": "SDK to integrate your website with the blockchain",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build": "tsup",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -19,5 +25,10 @@
     "@solana/web3.js": "^1.98.0",
     "axios": "^1.7.9",
     "buffer": "^6.0.3"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.3"
   }
 }
