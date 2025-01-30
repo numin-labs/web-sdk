@@ -19,7 +19,7 @@ const txConvert = (base64Transaction : string)=>{
 }
 
 
-export const transferIn = async (clientSecret : string, amount : number, fromWallet : string, url : string|undefined)=>{
+export const transferIn = async (clientSecret : string, amount : number, fromWallet : string, url? : string)=>{
     try{
       const response = await axios.post(
         `${getURL(url)}/transfer/in`,
@@ -40,7 +40,7 @@ export const transferIn = async (clientSecret : string, amount : number, fromWal
 }
 
 
-export const transferOut = async (clientSecret : string, amount : number, toWallet : string, url : string|undefined)=>{
+export const transferOut = async (clientSecret : string, amount : number, toWallet : string, url? : string)=>{
     try{
       const response = await axios.post(
         `${getURL(url)}/transfer/out`,
