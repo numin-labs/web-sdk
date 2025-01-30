@@ -3,7 +3,13 @@ import {Buffer} from 'buffer'
 import {Transaction} from '@solana/web3.js'
 
 
-const BASE_URL = 'http://localhost:8080'
+const getURL = (url:string|undefined)=>{
+  if(url){
+    return url
+  }else{
+    return 'https://api.numin.xyz'
+  }
+}
 
 
 const txConvert = (base64Transaction : string)=>{
@@ -13,21 +19,20 @@ const txConvert = (base64Transaction : string)=>{
 }
 
 
-export const transferIn = async (clientSecret : string, amount : number, fromWallet : string)=>{
+export const transferIn = async (clientSecret : string, amount : number, fromWallet : string, url : string|undefined)=>{
     try{
       const response = await axios.post(
-        `${BASE_URL}/transfer/in`,
+        `${getURL(url)}/transfer/in`,
         {amount,fromWallet},
         {headers:{'Authorization':`Bearer ${clientSecret}`}}
       )
       const transaction = txConvert(response.data.base64Transaction)
       const {signature} = await window.phantom.solana.signAndSendTransaction(transaction)
       const confirmation = await axios.post(
-        `${BASE_URL}/transfer/process`,
+        `${getURL(url)}/transfer/process`,
         {signature},
         {headers:{'Authorization':`Bearer ${clientSecret}`}}
       )
-      console.log(confirmation.data)
       return confirmation.data
     }catch(e){
       console.log('Something went wrong')
@@ -35,21 +40,20 @@ export const transferIn = async (clientSecret : string, amount : number, fromWal
 }
 
 
-export const transferOut = async (clientSecret : string, amount : number, toWallet : string)=>{
+export const transferOut = async (clientSecret : string, amount : number, toWallet : string, url : string|undefined)=>{
     try{
       const response = await axios.post(
-        `${BASE_URL}/transfer/out`,
+        `${getURL(url)}/transfer/out`,
         {amount,toWallet},
         {headers:{'Authorization':`Bearer ${clientSecret}`}}
       )
       const transaction = txConvert(response.data.base64Transaction)
       const {signature} = await window.phantom.solana.signAndSendTransaction(transaction)
       const confirmation = await axios.post(
-        `${BASE_URL}/transfer/process`,
+        `${getURL(url)}/transfer/process`,
         {signature},
         {headers:{'Authorization':`Bearer ${clientSecret}`}}
       )
-      console.log(confirmation.data)
       return confirmation.data
     }catch(e){
       console.log('Something went wrong')
