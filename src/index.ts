@@ -35,7 +35,7 @@ export const transferIn = async (clientSecret : string, amount : number, fromWal
       )
       return confirmation.data
     }catch(e){
-      console.log('Something went wrong')
+      throw new Error('Could not complete transfer!')
     }
 }
 
@@ -56,6 +56,6 @@ export const transferOut = async (clientSecret : string, amount : number, toWall
       )
       return confirmation.data
     }catch(e){
-      console.log('Something went wrong')
+      throw new Error('Could not complete transfer!')
     }
 }
