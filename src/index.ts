@@ -12,7 +12,7 @@ const getURL = (url:string|undefined)=>{
 }
 
 
-const txConvert = (base64Transaction : string)=>{
+export const txConvert = (base64Transaction : string)=>{
   const transactionBuffer = Buffer.from(base64Transaction, 'base64')
   const transaction = Transaction.from(transactionBuffer)
   return transaction
