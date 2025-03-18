@@ -19,6 +19,16 @@ export const txConvert = (base64Transaction : string)=>{
 }
 
 
+export const txSend = async (transaction : Transaction)=>{
+  try{
+    const {signature} = await window.phantom.solana.signAndSendTransaction(transaction)
+    return signature
+  }catch(e){
+    throw e
+  }
+}
+
+
 export const transferIn = async (sessionId : string, amount : number, fromWallet : string, url? : string)=>{
     try{
       const response = await axios.post(

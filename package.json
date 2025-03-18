@@ -1,6 +1,6 @@
 {
   "name": "@numin/web-sdk",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "SDK to integrate your website with the blockchain",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
